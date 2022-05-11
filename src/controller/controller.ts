@@ -1,5 +1,6 @@
 import { RequestHandler } from "express"
 import { Employee } from "../models/employeeMod"
+import { department } from "../models/employeeMod"
 const Joi = require('joi')
 
 let employees: Employee[] = []
@@ -25,9 +26,9 @@ export const addEmployee: RequestHandler = (request, response) => {
     const employ = request.body
     const newEmploy = {
         id: idtag,
-        name: employ.name,
-        salary: employ.salary,
-        department: employ.department
+        name: Joi.string().min(2).required().employ.name,
+        salary: Joi.number().required().employ.salary,
+        department: Joi.string().required().allow(department).employ.department
     }
     employees.push(newEmploy)
     idtag++
