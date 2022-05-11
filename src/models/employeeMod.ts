@@ -3,11 +3,11 @@ export class Employee {
                 public id: number,
                 public name: string,
                 public salary: number,
-                public department: department) {}
+                public department: Department) {}
 
 }
 
-export enum department {
+export enum Department {
     HR = "HR",
     PS = "PS"
 }
