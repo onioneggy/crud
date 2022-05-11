@@ -14,10 +14,6 @@ export const getEmployee: RequestHandler = (request, response) => {
     response.status(200).json(employee)
 }
 
-export const newEmployee: RequestHandler = (request, response) => {
-
-}
-
 export const delEmployee: RequestHandler = (request, response) => {
     const id = Number(request.params.id)
     employees = employees.filter(employee => employee.id !== id )

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.newData = exports.addEmployee = exports.delEmployee = exports.newEmployee = exports.getEmployee = exports.getEmployeeAll = void 0;
+exports.newData = exports.addEmployee = exports.delEmployee = exports.getEmployee = exports.getEmployeeAll = void 0;
 let employees = [];
 let idtag = 0;
 const getEmployeeAll = (request, response) => {
@@ -14,9 +14,6 @@ const getEmployee = (request, response) => {
     response.status(200).json(employee);
 };
 exports.getEmployee = getEmployee;
-const newEmployee = (request, response) => {
-};
-exports.newEmployee = newEmployee;
 const delEmployee = (request, response) => {
     const id = Number(request.params.id);
     employees = employees.filter(employee => employee.id !== id);
