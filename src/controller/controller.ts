@@ -1,5 +1,6 @@
 import { RequestHandler } from "express"
 import { Employee } from "../models/employeeMod"
+const Joi = require('joi')
 
 let employees: Employee[] = []
 let idtag = 0
@@ -34,7 +35,7 @@ export const addEmployee: RequestHandler = (request, response) => {
 
 }
 
-export const newData: RequestHandler = (request, response) => {
+export const updateData: RequestHandler = (request, response) => {
     const id = Number(request.params.id)
     const employ = request.body
     const newName = employ.name
