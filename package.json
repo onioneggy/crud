@@ -17,5 +17,13 @@
     "@types/node": "^17.0.32",
     "nodemon": "^2.0.16"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onioneggy/crud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onioneggy/crud/issues"
+  },
+  "homepage": "https://github.com/onioneggy/crud#readme",
   "description": ""
 }
