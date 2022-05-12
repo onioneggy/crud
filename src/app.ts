@@ -1,7 +1,13 @@
 import express, {Request, Response, NextFunction} from 'express'
 import { json } from 'body-parser'
-import routes from "./routes/routes"
+import router from "./routes"
 import { request } from 'http'
+import { EmployeeController } from './controller'
+import { InMemoryEmployeeRepository } from './repository/memory'
+
+const repository = new InMemoryEmployeeRepository()
+const controller = new EmployeeController(repository)
+const routes = router(controller)
 
 const app = express()
 app.use(json())
