@@ -78,6 +78,6 @@ const findEmployeeWithID = (id: number): Employee | undefined => {
 }
 
 const checkIfSame = (id: number, newData: {name: string, salary: number, department: Department}) => {
-    const currData = employees[id]
-    return currData.name === newData.name && currData.salary === newData.salary && newData.department === currData.department
+    const currData = employees.find(employee => employee.id === id)
+    return currData!.name === newData.name && currData!.salary === newData.salary && newData.department === currData!.department
 }
