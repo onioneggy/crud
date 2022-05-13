@@ -2,7 +2,6 @@ import { RequestHandler } from "express"
 import { Employee, Department } from "../models"
 import { EmployeeRepository } from "../repository"
 
-
 const Joi = require('joi')
 const schema = Joi.object({
     name: Joi.string().min(2).required(),

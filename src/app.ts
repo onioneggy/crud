@@ -4,8 +4,10 @@ import router from "./routes"
 import { request } from 'http'
 import { EmployeeController } from './controller'
 import { InMemoryEmployeeRepository } from './repository/memory'
+import { SqlEmployeeRepository } from './repository/sql'
+import { pool } from './database'
 
-const repository = new InMemoryEmployeeRepository()
+const repository = new SqlEmployeeRepository(pool)
 const controller = new EmployeeController(repository)
 const routes = router(controller)
 
