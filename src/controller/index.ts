@@ -4,9 +4,9 @@ import { EmployeeRepository } from "../repository"
 
 const Joi = require('joi')
 const schema = Joi.object({
-    name: Joi.string().min(2).required(),
-    salary: Joi.number().required(),
-    department: Joi.string().valid(...Object.values(Department)).required()
+    name: Joi.string().min(4).max(30).required(),
+    salary: Joi.number().min(0).required(),
+    department: Joi.string().insensitive().options({convert: true}).valid(...Object.values(Department)).required()
 })
 
 export class EmployeeController {
@@ -17,7 +17,7 @@ export class EmployeeController {
 
     getEmployeeAll: RequestHandler = async (request, response) => {
         const employees = await this.repository.findAllEmployees()
-        response.status(200).json({ employees })
+        response.status(200).json(employees)
     }
     
     getEmployee: RequestHandler = async (request, response) => {
@@ -35,7 +35,7 @@ export class EmployeeController {
             return response.status(404).json({errorMessage: `No Employee with id: ${id} was found`})
         }
         await this.repository.deleteEmployeeWithId(id)
-        response.status(204)
+        response.status(204).end()
     }
     
     addEmployee: RequestHandler = async (request, response, next) => {
@@ -50,6 +50,7 @@ export class EmployeeController {
     
     updateData: RequestHandler = async (request, response) => {
         const id = Number(request.params.id)
+        console.log(request.body)
         const {error, value} = schema.validate(request.body)
         if (error) {
             return response.status(400).json({errorMessage: error.message})
