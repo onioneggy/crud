@@ -45,7 +45,7 @@ export class UserController {
         }
         const userFound = await this.repository.findUser(username)
         if (userFound) {
-            return response.status(404).json({ errorMessage: "Username not unique!" })
+            return response.status(400).json({ errorMessage: "Username not unique!" })
         }
 
         try {
