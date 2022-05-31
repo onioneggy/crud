@@ -34,8 +34,8 @@ export class UserController {
             return response.status(400).json({ errorMessage: "Invalid Password!"})
         }
 
-        const token = jwt.sign({ username }, process.env.SECRET as string)
-        response.status(200).json({ token, username })
+        const token = jwt.sign({ username }, process.env.SECRET as string, {expiresIn: "10h"})
+            return response.status(200).json({ token, username })
     }
 
     signUp: RequestHandler = async (request, response) => {
