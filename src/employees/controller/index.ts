@@ -38,7 +38,7 @@ export class EmployeeController {
         response.status(204).end()
     }
     
-    addEmployee: RequestHandler = async (request, response, next) => {
+    addEmployee: RequestHandler = async (request, response) => {
         const {error, value} = schema.validate(request.body)
         if (error) {
             return response.status(400).json({errorMessage: error.message})
