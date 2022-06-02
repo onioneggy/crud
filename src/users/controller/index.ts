@@ -22,20 +22,20 @@ export class UserController {
     login: RequestHandler = async (request, response) => {
         const { username, password }: LoginRequest = request.body
         if (!username || !password) {
-            return response.status(400).json({ errorMessage: "Username and password are required fields!" })
+            return response.status(400).json({ status: false, errorMessage: "Username and password are required fields!" })
         }
         const userFound = await this.repository.findUser(username)
         if (!userFound) {
-            return response.status(404).json({ errorMessage: "User not found!" })
+            return response.status(404).json({ status: false, errorMessage: "User not found!" })
         }
         const isPasswordCorrect = await bcrypt.compare(password, userFound.password)
 
         if (!isPasswordCorrect) {
-            return response.status(400).json({ errorMessage: "Invalid Password!"})
+            return response.status(400).json({ status: false, errorMessage: "Invalid Password!"})
         }
 
         const token = jwt.sign({ username }, process.env.SECRET as string, {expiresIn: "10h"})
-            return response.status(200).json({ token, username })
+            return response.status(200).json({ token, username, status: true })
     }
 
     signUp: RequestHandler = async (request, response) => {
