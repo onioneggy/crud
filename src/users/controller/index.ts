@@ -39,7 +39,6 @@ export class UserController {
     }
 
     signUp: RequestHandler = async (request, response) => {
-        console.log('deska deska')
         const { username, password }: SignUpRequest = request.body
         if (!username || !password) {
             return response.status(400).json({ errorMessage: "Username and password are required fields!" })
@@ -56,7 +55,6 @@ export class UserController {
                 password: passwordHash
             };
             await this.repository.addUser(user)
-            console.log('hello')
             return response.status(201).end()
 
         } catch(err) {
