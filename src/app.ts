@@ -9,11 +9,13 @@ import 'dotenv/config'
 import { SqlUserRepository } from './users/repository/sql'
 import { UserController } from './users/controller'
 import userRoutes from './users/routes'
+import { SequelizeEmployeeRepository } from './employees/repository/sequelize'
+import { SequelizeUserRepository } from './users/repository/sequelize'
 
-const repository = new SqlEmployeeRepository(pool)
+const repository = new SequelizeEmployeeRepository()
 const controller = new EmployeeController(repository)
 const employeeRoute = employeeRoutes(controller)
-const userRepo = new SqlUserRepository(pool)
+const userRepo = new SequelizeUserRepository
 const userCon = new UserController(userRepo)
 const userRoute = userRoutes(userCon)
 

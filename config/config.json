@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "zhaoyan",
+    "password": "12345",
+    "database": "crud",
+    "host": "db",           
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "zhaoyan",
+    "password": "12345",
+    "database": "crud",
+    "host": "db",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "zhaoyan",
+    "password": "12345",
+    "database": "crud",
+    "host": "db",
+    "dialect": "postgres"
+  }
+}

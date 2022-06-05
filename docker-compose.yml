@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  app:
+    container_name: employee_api
+    build: .
+    restart: always
+    ports:
+      - 3001:3001
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+  db:
+    container_name: postgres-employees-api
+    image: postgres:12.6-alpine
+    environment:
+      POSTGRES_USER: zhaoyan
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: crud
+    ports: 
+      - 5432:5432
+    volumes: 
+      - data:/lib/db
+
+volumes:
+  data: {}

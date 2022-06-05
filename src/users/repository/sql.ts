@@ -6,7 +6,7 @@ export class SqlUserRepository implements UserRepository {
     constructor(private pool: Pool) {}
 
     async addUser(user: User): Promise<void> {
-        const query = `insert into users values(default, $1, $2)`
+        const query = `insert into users values($1, $2)`
         await this.pool.query(query, [user.username, user.password])
     }
     async findUser(name: string): Promise<User | undefined> {

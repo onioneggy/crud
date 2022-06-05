@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { EmployeeController } from '../controller'
 
+
 export default (controller: EmployeeController): Router => {
     const router = Router()
 

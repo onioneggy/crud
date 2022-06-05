@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { UserRepository } from "../repository";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { User } from "../model";
 import jwt from 'jsonwebtoken'
 
@@ -39,6 +39,7 @@ export class UserController {
     }
 
     signUp: RequestHandler = async (request, response) => {
+        console.log('deska deska')
         const { username, password }: SignUpRequest = request.body
         if (!username || !password) {
             return response.status(400).json({ errorMessage: "Username and password are required fields!" })
@@ -54,7 +55,8 @@ export class UserController {
                 username,
                 password: passwordHash
             };
-            this.repository.addUser(user)
+            await this.repository.addUser(user)
+            console.log('hello')
             return response.status(201).end()
 
         } catch(err) {

@@ -8,7 +8,7 @@ export class TestRepository implements UserRepository {
         return user
     }
 
-    addUser(user: User): void {
+    async addUser(user: User): Promise<void> {
         this.usersList.push(user)
     }
 

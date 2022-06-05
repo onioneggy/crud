@@ -2,7 +2,6 @@ import { RequestHandler } from "express"
 import { Employee, Department } from "../models"
 import { EmployeeRepository } from "../repository"
 import jwt from 'jsonwebtoken'
-import { json } from "body-parser"
 
 const Joi = require('joi')
 const schema = Joi.object({
@@ -19,10 +18,16 @@ export class EmployeeController {
 
     getEmployeeAll: RequestHandler = async (request, response) => {
         const token = request.headers.token
-        const decodedToken = jwt.verify(token as string, process.env.SECRET as string)
-        if (!decodedToken) {
-            return response.status(401).json({ error: 'token missing or invalid' })
+        if (!token) {
+            return response.status(401).json({ errorMessage: 'token missing' })
         }
+
+        try {
+            const decodedToken = jwt.verify(token as string, process.env.SECRET as string)
+            } catch (err) {
+            return response.status(401).json({ errorMessage: err })
+            }
+
         const employees = await this.repository.findAllEmployees()
         response.status(200).json(employees)
     }
