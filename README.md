@@ -11,7 +11,7 @@ To install the packages
 To updates changes automatically
 
 ### `npm run start`
-Runs the server using nodemon.
+To run npm run build && npx sequelize db:migrate && nodemon src/app.ts for compilation.
 
 
 
