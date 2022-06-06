@@ -62,7 +62,6 @@ export class EmployeeController {
     
     updateData: RequestHandler = async (request, response) => {
         const id = Number(request.params.id)
-        console.log(request.body)
         const {error, value} = schema.validate(request.body)
         if (error) {
             return response.status(400).json({errorMessage: error.message})

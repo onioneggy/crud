@@ -14,9 +14,6 @@ SequelizeEmployees.init({
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        get: function() {
-            return this.getDataValue('id')  
-        }
     },
     name: {
         type: DataTypes.STRING,

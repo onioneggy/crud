@@ -1,3 +1,4 @@
+import { DefaultSerializer } from "v8";
 import { CreateEmployeeRequest, EmployeeRepository } from ".";
 import { Department, Employee } from "../models";
 import { SequelizeEmployees } from "../sequelize/employeeModel";
@@ -16,7 +17,7 @@ export class SequelizeEmployeeRepository implements EmployeeRepository {
         return employee
     }
     async deleteEmployeeWithId(id: number): Promise<void> {
-        await SequelizeEmployees.destroy({where: {id}})
+        await SequelizeEmployees.destroy({where: {id: id}})
     }
     async addNewEmployee(request: CreateEmployeeRequest): Promise<Employee> {
         await SequelizeEmployees.create({name: request.name, salary: request.salary, department: request.department})

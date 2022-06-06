@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npm run build && npx sequelize db:migrate && nodemon src/app.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "undoMigrate": "npx sequelize-cli db:migrate:undo"
@@ -24,15 +24,19 @@
     "sequelize": "^6.20.1"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.17.12",
     "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.32",
     "@types/pg": "^8.6.5",
+    "jest": "^28.1.0",
     "nodemon": "^2.0.16",
     "sequelize-cli": "^6.4.1",
+    "ts-jest": "^28.0.4",
     "ts-node": "^10.8.0"
   },
   "repository": {
